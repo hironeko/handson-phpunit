@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::group(['middleware' => ['auth:api']], function () {
-    Route::resource('user', 'UserController');
+
+Route::group(['middleware' => ['auth:admin'], 'as' => 'admin.', 'prefix' => 'admin'], function () {
+    Route::get('organization/{organization_id}', 'OrganizationController@show')->name('organization-show');
 });
