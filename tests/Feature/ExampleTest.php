@@ -3,10 +3,8 @@
 namespace Tests\Feature;
 
 use App\Admin;
-use App\User;
 use Tests\TestCase;
 use App\Organization;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ExampleTest extends TestCase
 {
