@@ -10,6 +10,8 @@ class Admin extends Authenticatable
 {
     use SoftDeletes;
 
+    const MASTER = 1;
+    const READONLY = 2;
 
     /**
      * The attributes that are mass assignable.

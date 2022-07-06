@@ -19,5 +19,5 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::group(['middleware' => ['auth:user'], 'as' => 'user.', 'prefix' => 'user'], function () {
-    Route::resource('/', 'UserController');
+    Route::get('/', 'UserController@index')->name('index');
 });

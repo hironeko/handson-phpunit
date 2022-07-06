@@ -21,4 +21,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth:admin'], 'as' => 'admin.', 'prefix' => 'admin'], function () {
     Route::get('organization/{organization_id}', 'OrganizationController@show')->name('organization-show');
+    Route::post('/{organization_id}/user/store', 'UserController@store')->name('user-store');
 });

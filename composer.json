@@ -58,7 +58,7 @@
             "@php artisan key:generate --ansi"
         ],
         "test-run": [
-            "./vendor/bin/phpunit"
+            "env TESTING_MIGRATE=0 ./vendor/bin/phpunit"
         ]
     }
 }

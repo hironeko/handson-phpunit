@@ -24,7 +24,9 @@ class CreateAdminsTable extends Migration
                 ->nullable()
                 ->default(null);
             $table->rememberToken();
+            $table->unsignedTinyInteger('role_id');
             $table->timestamps();
+
             $table->softDeletes();
         });
     }
