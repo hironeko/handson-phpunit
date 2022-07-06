@@ -3,7 +3,7 @@
 ```shell
 composer install
 docker-compose up -d
-php artisan migrate --env=testing
+php artisan migrate --seed --env=testing
 ```
 
 
