@@ -10,30 +10,34 @@ jobs:
       startsWith(github.event.comment.body, '/test_run')
     runs-on: ubuntu-latest
 
-    services:
-      mysql:
-        image: mysql:8.0.19
-        ports:
-          - 3306:3306
-        options: --health-cmd "mysqladmin ping -h localhost" --health-interval 20s --health-timeout 10s --health-retries 10
-        env:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: laravel_test
-    env:
-      DB_CONNECTION: mysql
-      DB_HOST: 127.0.0.1
-      DB_PORT: 3306
-      DB_DATABASE: laravel_test
-      DB_USERNAME: root
-      DB_PASSWORD: root
-
     steps:
-      - uses: actions/checkout@2
-        with:
-          ref: ${{ steps.get_branch.outputs.branch }}
-      - name: composer install
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-      - name: migrate and seed
-        run: php artisan migrate --seed --env=testing
-      - name: run test
-        run: composer test-run
+      - name: echo
+        run: echo
+
+    # services:
+    #   mysql:
+    #     image: mysql:8.0.19
+    #     ports:
+    #       - 3306:3306
+    #     options: --health-cmd "mysqladmin ping -h localhost" --health-interval 20s --health-timeout 10s --health-retries 10
+    #     env:
+    #       MYSQL_ROOT_PASSWORD: root
+    #       MYSQL_DATABASE: laravel_test
+    # env:
+    #   DB_CONNECTION: mysql
+    #   DB_HOST: 127.0.0.1
+    #   DB_PORT: 3306
+    #   DB_DATABASE: laravel_test
+    #   DB_USERNAME: root
+    #   DB_PASSWORD: root
+
+    # steps:
+    #   - uses: actions/checkout@2
+    #     with:
+    #       ref: ${{ steps.get_branch.outputs.branch }}
+    #   - name: composer install
+    #     run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+    #   - name: migrate and seed
+    #     run: php artisan migrate --seed --env=testing
+    #   - name: run test
+    #     run: composer test-run
