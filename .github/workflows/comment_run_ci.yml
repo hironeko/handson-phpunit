@@ -6,7 +6,7 @@ on:
 
 jobs:
   test:
-    if: contains(github.event.comment.html_url, '/pull/') && startsWith(github.event.comment.body, '/test_run')
+    if: (github.event.issue.pull_request != null) && startsWith(github.event.comment.body, '!github test_run')
 
     runs-on: ubuntu-latest
     steps:
