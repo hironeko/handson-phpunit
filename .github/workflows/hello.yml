@@ -1,9 +1,9 @@
-name: Hello
+# name: Hello
 
-on: push
+# # on: push
 
-jobs:
-  hello:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "hello"
+# jobs:
+#   hello:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: echo "hello"
