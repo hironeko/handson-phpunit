@@ -6,7 +6,7 @@ on:
 
 jobs:
   test:
-    if: github.event_name == 'issue_comment' && contains(github.event.comment.html_url, '/pull/') && startsWith(github.event.comment.body, '/test_run')
+    if: contains(github.event.comment.html_url, '/pull/') && startsWith(github.event.comment.body, '/test_run')
 
     runs-on: ubuntu-latest
     steps:
