@@ -2,8 +2,7 @@ name: "run from comment by pr"
 
 on:
   issue_comment:
-    types:
-      - "created"
+    types: [created, edited]
 
 jobs:
   test:
