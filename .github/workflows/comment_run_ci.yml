@@ -9,11 +9,11 @@ on:
 jobs:
   deploy:
     # add comment of pull request && comment is KEYWORD
-    if: (github.event.issue.pull_request != null) && github.event.comment.body == 'test-run'
+    if: (github.event.issue.pull_request != null) && github.event.comment.body == 'hoge-run'
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "hello"
+      - run: echo 'fuga'
 # name: "run from comment by pr"
 
 # on:
