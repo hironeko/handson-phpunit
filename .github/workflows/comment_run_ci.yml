@@ -6,7 +6,7 @@ on:
     types: [created, edited]
 
 jobs:
-  test:
+  sample:
     # add comment of pull request && comment is KEYWORD
     if: github.event_name == 'issue_comment' && github.event.comment.body == 'exec run'
     runs-on: ubuntu-latest
