@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     # add comment of pull request && comment is KEYWORD
-    if: (github.event.issue.pull_request != null) && github.event.comment.body == 'hoge-run'
+    if: (github.event.issue.pull_request != null) && github.event.comment.body == 'hironeko-run'
     runs-on: ubuntu-latest
 
     steps:
