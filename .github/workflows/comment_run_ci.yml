@@ -2,17 +2,16 @@ name: "run from comment by pr"
 
 on:
   issue_comment:
-    types: [created, edited]
+    types:
+      - "created"
 
 jobs:
   test:
     if: github.event_name == 'issue_comment' && contains(github.event.comment.html_url, '/pull/') && startsWith(github.event.comment.body, '/test_run')
+
     runs-on: ubuntu-latest
-
     steps:
-      - name: echo
-        run: echo
-
+      - run: echo "hello"
     # services:
     #   mysql:
     #     image: mysql:8.0.19
