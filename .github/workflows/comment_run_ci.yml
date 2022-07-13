@@ -2,12 +2,12 @@ name: run from comment by pr
 
 on:
   issue_comment:
-    types:
-      - created
+    types: [created, edited]
 
 jobs:
   test_run:
-    if: ((github.event.issue.pull_request != null) && github.event.comment.body == '/test_run')
+    if: github.event_name == 'issue_comment' &&
+      startsWith(github.event.comment.body, '/test_run')
     runs-on: ubuntu-latest
 
     services:
@@ -29,6 +29,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@2
+        with:
+          ref: ${{ steps.get_branch.outputs.branch }}
       - name: composer install
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: migrate and seed
