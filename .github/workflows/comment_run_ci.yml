@@ -8,7 +8,8 @@ on:
 jobs:
   sample:
     # add comment of pull request && comment is KEYWORD
-    if: github.event_name == 'issue_comment' && github.event.comment.body == 'exec run'
+    # if: github.event_name == 'issue_comment' && github.event.comment.body == 'exec run'
+    if: github.event.comment.body == 'exec run'
     runs-on: ubuntu-latest
 
     steps:
