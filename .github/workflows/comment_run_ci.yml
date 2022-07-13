@@ -1,13 +1,12 @@
-name: run from comment by pr
+name: "run from comment by pr"
 
 on:
   issue_comment:
     types: [created, edited]
 
 jobs:
-  test_run:
-    if: github.event_name == 'issue_comment' &&
-      startsWith(github.event.comment.body, '/test_run')
+  test:
+    if: github.event_name == 'issue_comment' && contains(github.event.comment.html_url, '/pull/') && startsWith(github.event.comment.body, '/test_run')
     runs-on: ubuntu-latest
 
     steps:
