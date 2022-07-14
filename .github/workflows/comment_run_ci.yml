@@ -3,7 +3,8 @@ name: deploy dev from feature by pull request
 # (0) issueのコメント生成をハンドリング
 on:
   issue_comment:
-    types: [created, edited]
+    types:
+      - created
 
 jobs:
   sample:
