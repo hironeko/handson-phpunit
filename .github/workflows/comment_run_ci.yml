@@ -31,7 +31,7 @@ jobs:
       DB_PASSWORD: root
 
     steps:
-      - uses: actions/checkout@2
+      - uses: actions/checkout@v2
         with:
           ref: ${{ steps.get_branch.outputs.branch }}
       - name: composer install
