@@ -1,4 +1,4 @@
-name: deploy dev from feature by pull request
+name: sample
 
 # (0) issueのコメント生成をハンドリング
 on:
