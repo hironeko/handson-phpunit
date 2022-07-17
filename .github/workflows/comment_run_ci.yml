@@ -1,6 +1,5 @@
 name: sample
 
-# (0) issueのコメント生成をハンドリング
 on:
   issue_comment:
     types:
@@ -8,7 +7,6 @@ on:
 
 jobs:
   sample:
-    # add comment of pull request && comment is KEYWORD
     if: github.event_name == 'issue_comment' && contains(github.event.comment.html_url, '/pull/') && github.event.comment.body == 'exec run'
     runs-on: ubuntu-latest
 

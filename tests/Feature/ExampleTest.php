@@ -19,9 +19,6 @@ class ExampleTest extends TestCase
         $this->organization = factory(Organization::class)->create();
     }
 
-    /**
-     * @group tttt
-     */
     public function test_create_user_success()
     {
         $params = $this->params();
@@ -35,9 +32,6 @@ class ExampleTest extends TestCase
         $this->assertEquals($this->organization->id, $data['organization_id']);
     }
 
-    /**
-     * @group tttt
-     */
     public function test_create_user_fail_403()
     {
         $admin = factory(Admin::class)->create(['role_id' => Admin::READONLY]);
@@ -47,9 +41,6 @@ class ExampleTest extends TestCase
         $response->assertStatus(403);
     }
 
-    /**
-     * @group tttt
-     */
     public function test_create_user_fail_duplicate_email()
     {
         // 事前に作成
@@ -66,9 +57,6 @@ class ExampleTest extends TestCase
         );
     }
 
-    /**
-     * @group tttt
-     */
     public function test_create_user_fail_model_not_found_organization()
     {
         $response = $this->postJson(route('admin.user-store', ['organization_id' => $this->organization->id + 1]), $this->params());
