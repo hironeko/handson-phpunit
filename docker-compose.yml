@@ -14,3 +14,17 @@ services:
       - ./docker/data/mysql:/var/lib/mysql
       - ./docker/initdb:/docker-entrypoint-initdb.d
     tty: true
+  php:
+    build:
+      context: ./docker/php
+    environment:
+      MYSQL_DATABASE: default
+      MYSQL_ROOT_PASSWORD: root
+      TZ: "Asia/Tokyo"
+    volumes:
+      - ./:/src
+    stdin_open: true
+    tty: true
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
