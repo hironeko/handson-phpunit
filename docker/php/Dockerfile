@@ -1,11 +1,11 @@
 FROM php:7.4-cli-alpine
 
-RUN docker-php-ext-install pdo_mysql
-RUN apk add --no-cache $PHPIZE_DEPS icu-dev \
-    && pecl install xdebug \
-    && docker-php-ext-enable xdebug
+RUN apk add --no-cache $PHPIZE_DEPS icu-dev
+# 注意：intlをインストールするにはicu-devが必要
+RUN docker-php-ext-install pdo_mysql intl
+# xdebug
+RUN pecl install xdebug && docker-php-ext-enable xdebug
 COPY 90-xdebug.ini /usr/local/etc/php/conf.d/
-RUN docker-php-ext-install intl
 RUN echo ''
 
 WORKDIR /src
