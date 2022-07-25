@@ -13,6 +13,45 @@ class SampleService
         4 => 'four'
     ];
 
+
+    /**
+     * [
+     *   'isXxxx' => true / false
+     *   'canXxx' => true / false
+     * ]
+     * @param array $params
+     * @return array
+     */
+    public function getXxxx(array $params): array
+    {
+        if ($params['isXxx']) {
+
+            if ($params['canXxx']) {
+                return [
+                    'message' => 'どちらもtrueです',
+                    'can_edit' => true
+                ];
+            }
+
+            return [
+                'message' => 'isXxxはtrueでcanXxxはfalseです',
+                'can_edit' => true
+            ];
+        }
+
+        if ($params['canXxx']) {
+            return [
+                'message' => 'isXxxはfalseでCanXxxはtrueです',
+                'can_edit' => false
+            ];
+        }
+
+        return [
+            'message' => 'どちらもfalseです',
+            'can_edit' => false
+        ];
+    }
+
     private function firstMethod(int $typeNumber)
     {
         if (!in_array($typeNumber, array_keys(self::TYPE_NUMBER), true)) {
