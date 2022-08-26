@@ -3,8 +3,6 @@
 namespace Tests\Feature\Http\Controllers\Api\Jokes;
 
 use App\Services\JokeService;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\App;
 use Tests\TestCase;
 
@@ -14,9 +12,11 @@ class JokesControllerTest extends TestCase
      * A basic feature test example.
      *
      * @return void
+     * @group live
      */
     public function testWithoutMocking()
     {
+        $this->markTestSkipped('Live API test');
         $response = $this->get('/api/jokes/random');
 
         $response->assertStatus(200);
@@ -26,6 +26,7 @@ class JokesControllerTest extends TestCase
     public function testWithMocking()
     {
         $test_joke = json_decode(json_encode([
+            'id' => 42,
             'type' => 'twopart',
             'setup' => 'What do you call a witch at the beach?',
             'delivery' => 'A Sandwich',
@@ -39,5 +40,9 @@ class JokesControllerTest extends TestCase
         $response = $this->get('/api/jokes/random');
 
         $response->assertStatus(200);
+        $response->assertJson([
+            'id' => 42,
+            'delivery' => 'A Sandwich',
+        ]);
     }
 }
