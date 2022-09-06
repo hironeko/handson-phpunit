@@ -48,7 +48,7 @@ class JokeService
      * @return object JSON object
      * @throws JokeException
      */
-    private function fetchJsonFromUrl(string $url, array $params = []): object
+    protected function fetchJsonFromUrl(string $url, array $params = []): object
     {
         if($json = json_decode(file_get_contents($url . '?' . http_build_query($params)))) {
             if ($json->error != false) {
