@@ -1,16 +1,17 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Unit\Services;
 
-use ReflectionClass;
 use App\Services\SampleService;
-use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Tests\TestCase;
 
-class ExampleTest extends TestCase
+class SampleServiceTest extends TestCase
 {
     private $service;
     private $reflection;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -19,12 +20,9 @@ class ExampleTest extends TestCase
     }
 
     /**
-     * @dataProvider params
-     * @param array $params
-     * @param string $message
-     * @param bool $canEdit
+     * @dataProvider getXxxxParams
      */
-    public function test_getXxx(array $params, string $message, bool $canEdit)
+    public function test_getXxxx(array $params, string $message, bool $canEdit)
     {
         $result = $this->service->getXxxx($params);
 
@@ -32,7 +30,7 @@ class ExampleTest extends TestCase
         $this->assertEquals($canEdit, $result['can_edit']);
     }
 
-    public function params()
+    public function getXxxxParams()
     {
         return [
             'どちらもtrue' => [
@@ -71,12 +69,14 @@ class ExampleTest extends TestCase
     }
 
     /**
+     * @group tttt
      */
     public function test_first_method_success()
     {
         $method = $this->reflection->getMethod('firstMethod');
         $method->setAccessible(true);
         $result = $method->invoke($this->service, 1);
+
         $this->assertEquals(
             $this->service::TYPE_NUMBER[1],
             $result
@@ -84,10 +84,13 @@ class ExampleTest extends TestCase
     }
 
     /**
+     * @group tttt
      */
     public function test_first_method_fail()
     {
         $this->expectException(BadRequestHttpException::class);
+        $this->expectExceptionMessage('正しい選択を行なってください');
+
         $method = $this->reflection->getMethod('firstMethod');
         $method->setAccessible(true);
         $method->invoke($this->service, 5);

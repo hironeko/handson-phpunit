@@ -52,7 +52,13 @@ class SampleService
         ];
     }
 
-    private function firstMethod(int $typeNumber)
+    /**
+     *
+     * @param int $typeNumber
+     * @throws BadRequestHttpException
+     * @return string
+     */
+    private function firstMethod(int $typeNumber): string
     {
         if (!in_array($typeNumber, array_keys(self::TYPE_NUMBER), true)) {
             throw new BadRequestHttpException('正しい選択を行なってください');
